@@ -1,4 +1,4 @@
-# Copyright (c) 2026 Marcelo
+# Copyright (c) 2026 shelojara
 # Released under the terms of the LGPLv3 or higher.
 
 import copy

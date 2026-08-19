@@ -1,6 +1,6 @@
 {
     "name": "Mesh Cutter",
-    "author": "Marcelo",
+    "author": "shelojara",
     "version": "1.0.0",
     "description": "Cuts the selected model in half through the middle, producing two separate closed solids that stay split when you re-orient them.",
     "api": 8,
