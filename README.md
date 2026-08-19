@@ -58,12 +58,18 @@ seam there is only as good as the model's own tessellation.
 ## Tests
 
 ```
-python3 tests/test_plane_cut.py path/to/model.3mf
+python3 tests/test_plane_cut.py                     # built-in shapes
+python3 tests/test_plane_cut.py path/to/model.3mf   # ...and your own model
 ```
 
-Any watertight 3mf will do; with no argument it looks for `bottom_shelf.3mf` in
-the repository root, which isn't committed here. The run cuts the model 60 ways — the three axes at random heights plus oblique
-planes — and checks each half is watertight (every edge shared by exactly two
-triangles) and that the two volumes add back up to the original. A 200-cut run
-of the same checks passes with zero open edges and volume error at the limit of
-double precision.
+No model file is needed: the suite builds its own. A **cube** covers the plain
+case, and a **square tube** covers the hard one — cutting across it leaves an
+outline with a hole in it and walls a couple of triangles apart, which is what
+breaks naive ear clipping. Both are checked against their analytic volume first,
+so a broken test shape can't be mistaken for a broken cutter.
+
+Each shape is then cut 60 ways — the three axes at random heights plus oblique
+planes — and every half is checked to be watertight (each edge walked exactly
+once in each direction, so a face that is turned the wrong way counts as a
+failure too) and for the two volumes to add back up to the original. Any
+watertight 3mf passed on the command line gets the same treatment.
